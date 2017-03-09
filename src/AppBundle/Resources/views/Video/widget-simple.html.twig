@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{ video.title }}
+    </div>
+    <div class="panel-body">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{{ video.embed }}" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a href="{{ path('app.video.read', {'id': video.id}) }}" class="pull-left">View details &raquo;</a>
+        <span class="pull-right"><i class="glyphicon glyphicon-folder-open"></i> &nbsp;<a href="{{ path('app.category.read', {'id': video.category.id}) }}">{{ video.category.name }}</a></span>
+        <div class="clearfix"></div>
+    </div>
+</div>

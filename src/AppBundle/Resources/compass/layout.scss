@@ -1,0 +1,33 @@
+html {
+  min-height: 100%;
+  position: relative;
+
+  body {
+    margin-bottom: 60px;
+
+    .main {
+      margin: 20px 0 0;
+    }
+
+    .jumbotron {
+      background: url('/bundles/app/img/banner-01.jpg') center center;
+      color: #fff;
+
+
+      .content {
+        text-shadow: 2px 2px #000;
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px 0;
+
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      color: #58666e;
+      background-color: #eaeaea;
+    }
+  }
+}

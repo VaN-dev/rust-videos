@@ -1,0 +1,10 @@
+services:
+    app.converter.video.uri_to_embed:
+        class: AppBundle\Service\Converter\Video\UriToEmbedConverter
+
+    app.listener.video:
+        class: AppBundle\EventListener\VideoEventListener
+        arguments:
+            - "@app.converter.video.uri_to_embed"
+        tags:
+            - { name: kernel.event_listener, event: app.video_pre_save, method: preSave }

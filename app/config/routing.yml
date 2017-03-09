@@ -1,0 +1,21 @@
+app:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+app.video:
+    path:     /video
+    defaults: { _controller: AppBundle:Video:index }
+app.video.insert:
+    path:     /video/insert
+    defaults: { _controller: AppBundle:Video:insert }
+app.video.read:
+    path:     /video/{id}
+    defaults: { _controller: AppBundle:Video:read }
+    requirements:
+        id: \d+
+
+app.category.read:
+    path:     /category/{id}
+    defaults: { _controller: AppBundle:Category:read }
+    requirements:
+        id: \d+
