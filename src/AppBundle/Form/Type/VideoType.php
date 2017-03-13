@@ -22,11 +22,15 @@ class VideoType extends AbstractType
         $builder
             ->add('title')
             ->add('url')
+            ->add('description')
             ->add('category', EntityType::class, [
                 'class' => 'AppBundle\Entity\Category',
                 'choice_label' => 'name',
-                'placeholder' => 'Choose a category..'
+                'placeholder' => 'Choose a category..',
+                'required' => false,
             ])
+            ->add('author')
+            ->add('channel')
         ;
     }
 

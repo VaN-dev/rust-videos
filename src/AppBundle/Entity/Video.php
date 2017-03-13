@@ -38,6 +38,13 @@ class Video
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
@@ -48,6 +55,20 @@ class Video
      * @ORM\Column(name="embed", type="string", length=255, nullable=true)
      */
     private $embed;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255, nullable=true)
+     */
+    private $author;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="channel", type="string", length=255, nullable=true)
+     */
+    private $channel;
 
     /**
      * @var Category
@@ -121,6 +142,24 @@ class Video
     /**
      * @return string
      */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return Video
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getUrl()
     {
         return $this->url;
@@ -171,6 +210,43 @@ class Video
         $this->category = $category;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param string $author
+     * @return Video
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChannel()
+    {
+        return $this->channel;
+    }
+
+    /**
+     * @param string $channel
+     * @return Video
+     */
+    public function setChannel($channel)
+    {
+        $this->channel = $channel;
+        return $this;
+    }
+
 
 }
 
