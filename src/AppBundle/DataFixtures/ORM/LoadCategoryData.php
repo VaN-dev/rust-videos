@@ -3,14 +3,14 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Category;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
- * Class LoadScopeData
+ * Class LoadCategoryData
  * @package AppBundle\DataFixtures\ORM
  */
-class LoadCategoryData implements FixtureInterface
+class LoadCategoryData extends AbstractFixture
 {
     /**
      * @param ObjectManager $manager
@@ -24,5 +24,7 @@ class LoadCategoryData implements FixtureInterface
         $manager->persist($category_01);
 
         $manager->flush();
+
+        $this->setReference('category-basedesigns', $category_01);
     }
 }

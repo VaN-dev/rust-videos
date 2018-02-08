@@ -2,6 +2,10 @@ app:
     path:     /
     defaults: { _controller: AppBundle:Default:index }
 
+app.register:
+    path:     /register
+    defaults: { _controller: AppBundle:User:register }
+
 app.video:
     path:     /video
     defaults: { _controller: AppBundle:Video:index }
