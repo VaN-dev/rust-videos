@@ -42,6 +42,18 @@ class User
      */
     private $password;
 
+    /**
+     * @var string
+     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
+     */
+    protected $salt;
+
+    /**
+     * @var array
+     * @ORM\Column(name="roles", type="array", nullable=true)
+     */
+    protected $roles;
+
 
     /**
      * Video constructor.
@@ -49,6 +61,8 @@ class User
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->roles = ["FRONTEND_USER"];
     }
 
     /**
@@ -107,6 +121,52 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
     }
 }
 
