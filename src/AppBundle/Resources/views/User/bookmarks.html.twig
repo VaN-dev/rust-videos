@@ -4,15 +4,15 @@
     <div class="main">
 
         <div class="container">
+            <h1>Bookmarks</h1>
+
             <div class="row">
-                {% for video in videos %}
+                {% for bookmark in bookmarks %}
                     <div class="col-md-4">
-                        {% include '@App/Video/widget-simple.html.twig' %}
+                        {% include '@App/Video/widget-simple.html.twig' with {'video': bookmark.video} %}
                     </div>
                 {% endfor %}
             </div>
-
-            <a href="{{ path('app.video.create') }}" class="btn btn-default">Add a video &raquo;</a>
         </div>
 
     </div>

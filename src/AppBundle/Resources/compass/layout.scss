@@ -20,6 +20,12 @@ html {
       }
     }
 
+    .favorite-trigger {
+      .disabled {
+        color: #ddd;
+      }
+    }
+
     footer {
       position: absolute;
       bottom: 0;

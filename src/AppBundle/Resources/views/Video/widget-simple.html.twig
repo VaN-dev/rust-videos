@@ -19,7 +19,10 @@
         <iframe class="embed-responsive-item" src="{{ video.embed }}" allowfullscreen></iframe>
     </div>
     <div class="caption">
-        <h3><a href="{{ path('app.video.read', {'id': video.id}) }}">{{ video.title }}</a></h3>
+        <h3>
+            <a href="{{ path('app.bookmark.create', {'video': video.id}) }}" class="favorite-trigger pull-right"><i class="glyphicon glyphicon-star disabled"></i></a>
+            <a href="{{ path('app.video.read', {'id': video.id}) }}">{{ video.title }}</a>
+        </h3>
     </div>
     <div class="panel-footer">
         {% if video.author is not null %}

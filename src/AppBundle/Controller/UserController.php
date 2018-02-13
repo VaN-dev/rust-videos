@@ -43,4 +43,19 @@ class UserController extends Controller
             'form' => $form->createView(),
         ]);
     }
+
+    public function profileAction()
+    {
+        return $this->render('@App/User/profile.html.twig');
+    }
+
+
+    public function bookmarksAction()
+    {
+        $bookmarks = $this->getDoctrine()->getRepository('AppBundle:Bookmark')->findBy(['user' => $this->getUser()]);
+
+        return $this->render('@App/User/bookmarks.html.twig', [
+            'bookmarks' => $bookmarks,
+        ]);
+    }
 }

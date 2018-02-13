@@ -6,23 +6,38 @@ app.register:
     path:     /register
     defaults: { _controller: AppBundle:User:register }
 
+# user
+app.user.profile:
+    path:     /profile
+    defaults: { _controller: AppBundle:User:profile }
+app.user.bookmarks:
+    path:     /bookmarks
+    defaults: { _controller: AppBundle:User:bookmarks }
+
+# video
 app.video:
     path:     /video
     defaults: { _controller: AppBundle:Video:index }
-app.video.insert:
-    path:     /video/insert
-    defaults: { _controller: AppBundle:Video:insert }
+app.video.create:
+    path:     /video/create
+    defaults: { _controller: AppBundle:Video:create }
 app.video.read:
     path:     /video/{id}
     defaults: { _controller: AppBundle:Video:read }
     requirements:
         id: \d+
 
+# category
 app.category.read:
     path:     /category/{id}
     defaults: { _controller: AppBundle:Category:read }
     requirements:
         id: \d+
+
+# bookmark
+app.bookmark.create:
+    path:     /bookmark/create/{video}
+    defaults: { _controller: AppBundle:Bookmark:create }
 
 # security
 app.security.login:

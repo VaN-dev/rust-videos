@@ -33,7 +33,7 @@ class VideoController extends Controller
      * @param Request $request
      * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function insertAction(Request $request)
+    public function createAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $dispatcher = $this->get('event_dispatcher');
