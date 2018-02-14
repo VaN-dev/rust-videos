@@ -11,4 +11,13 @@ services:
 
     # security
     app.security.encoder.password:
-      class: AppBundle\Service\Encoder\PasswordEncoder
+        class: AppBundle\Service\Encoder\PasswordEncoder
+
+    # twig
+    app.twig.extension:
+        class: AppBundle\Twig\AppExtension
+        arguments:
+            - "@security.token_storage"
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: twig.extension }

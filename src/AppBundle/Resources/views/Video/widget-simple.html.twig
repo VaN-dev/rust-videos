@@ -20,7 +20,7 @@
     </div>
     <div class="caption">
         <h3>
-            <a href="{{ path('app.bookmark.create', {'video': video.id}) }}" class="favorite-trigger pull-right"><i class="glyphicon glyphicon-star disabled"></i></a>
+            <a href="{% if not is_bookmarked(video) %}{{ path('app.bookmark.create', {'video': video.id}) }}{% else %}{{ path('app.bookmark.delete', {'video': video.id}) }}{% endif %}" class="favorite-trigger pull-right"><i class="glyphicon glyphicon-star{% if not is_bookmarked(video) %} disabled{% endif %}"></i></a>
             <a href="{{ path('app.video.read', {'id': video.id}) }}">{{ video.title }}</a>
         </h3>
     </div>

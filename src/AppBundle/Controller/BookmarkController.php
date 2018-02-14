@@ -31,4 +31,20 @@ class BookmarkController extends Controller
 
         return new RedirectResponse($request->headers->get('referer'));
     }
+
+    public function deleteAction(Request $request, Video $video)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $bookmark = $em->getRepository('AppBundle:Bookmark')->findOneBy(['user' => $this->getUser(), 'video' => $video]);
+
+        if (null !== $bookmark) {
+            $em->remove($bookmark);
+            $em->flush();
+
+            $this->addFlash('success', 'Bookmark successsfully deleted.');
+        }
+
+        return new RedirectResponse($request->headers->get('referer'));
+    }
 }

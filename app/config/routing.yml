@@ -38,6 +38,9 @@ app.category.read:
 app.bookmark.create:
     path:     /bookmark/create/{video}
     defaults: { _controller: AppBundle:Bookmark:create }
+app.bookmark.delete:
+    path:     /bookmark/delete/{video}
+    defaults: { _controller: AppBundle:Bookmark:delete }
 
 # security
 app.security.login:
