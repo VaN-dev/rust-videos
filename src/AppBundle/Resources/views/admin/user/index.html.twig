@@ -1,0 +1,20 @@
+{% extends '@App/admin/base.html.twig' %}
+
+{% block body %}
+    <h1>Users ({{ users | length }})</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <th scope="row">{{ user.username }}</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

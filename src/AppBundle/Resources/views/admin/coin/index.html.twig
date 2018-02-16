@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <h1>Coins ({{ coins | length }})</h1>
+
+    <div class="alert alert-dark" role="alert">
+        <a href="{{ path('admin.coin.sync') }}" class="alert-link">Cliquer ici</a> pour vérifier si de nouvelles monnaies sont disponibles.
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Coin</th>
+            <th scope="col">Symbol</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for coin in coins %}
+            <tr>
+                <th scope="row">{{ coin.name }}</th>
+                <td>{{ coin.symbol }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

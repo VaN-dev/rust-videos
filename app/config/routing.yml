@@ -6,6 +6,13 @@ app.register:
     path:     /register
     defaults: { _controller: AppBundle:User:register }
 
+#admin
+app.admin:
+#    path:     /admin
+#    defaults: { _controller: AppBundle:Admin\Default:index }
+    resource: "@AppBundle/Controller/Admin"
+    type:     annotation
+
 # user
 app.user.profile:
     path:     /profile
