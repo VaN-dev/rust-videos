@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Form\Type\ProfileType;
 use AppBundle\Form\Type\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /**
  * Class UserController
@@ -44,8 +46,37 @@ class UserController extends Controller
         ]);
     }
 
-    public function profileAction()
+    public function profileAction(Request $request)
     {
+        $form = $this->createForm(ProfileType::class, $this->getUser(), [
+            'method' => Request::METHOD_PATCH,
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $data = $form->getData();
+
+                if (null !== $data->getPassword()) {
+                    die('updating pass');
+                    // Password encoding
+                    $passwordEncoding = $this->get('app.security.encoder.password');
+                    $this->getUser()->setPassword($passwordEncoding->encodePassword($this->getUser()->getPassword(), $this->getUser()->getSalt()));
+                }
+
+                $this->getDoctrine()->getManager()->flush();
+
+                $request->getSession()->getFlashBag()->add('success', '<strong>Well done!</strong> Profile successfully updated.');
+
+                return $this->redirect($this->generateUrl('app.user.profile'));
+            }
+        }
+
+        return $this->render('@App/User/profile.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
         return $this->render('@App/User/profile.html.twig');
     }
 

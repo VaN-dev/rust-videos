@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -11,20 +12,22 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CategoryController extends Controller
 {
+    public function indexAction()
+    {
+        $categories = $this->getDoctrine()->getManager()->getRepository('AppBundle:Category')->findAll();
+
+        return $this->render('@App/Category/index.html.twig', [
+            'categories' => $categories,
+        ]);
+    }
+
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function readAction($id)
+    public function readAction(Category $category)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $category = $em->getRepository('AppBundle:Category')->find($id);
-
-        $videos = $this->getDoctrine()->getRepository('AppBundle:Video')->findBy(['category' => $category]);
-
         return $this->render('@App/Category/read.html.twig', [
             'category' => $category,
-            'videos' => $videos,
         ]);
     }
 }

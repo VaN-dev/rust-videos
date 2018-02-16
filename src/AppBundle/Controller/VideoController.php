@@ -39,6 +39,11 @@ class VideoController extends Controller
         $dispatcher = $this->get('event_dispatcher');
 
         $video = new Video();
+
+        if ($this->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $video->setAddedBy($this->getUser());
+        }
+
         $form = $this->createForm(VideoType::class, $video);
 
         $form->handleRequest($request);

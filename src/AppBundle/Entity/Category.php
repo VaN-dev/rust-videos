@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,18 @@ class Category
      */
     private $name;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Video", mappedBy="category")
+     */
+    private $videos;
+
+
+    public function __construct()
+    {
+        $this->videos = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -61,6 +74,24 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    /**
+     * @param ArrayCollection $videos
+     * @return Category
+     */
+    public function setVideos($videos)
+    {
+        $this->videos = $videos;
+        return $this;
     }
 }
 

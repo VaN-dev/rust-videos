@@ -4,14 +4,21 @@
     <div class="main">
 
         <div class="container">
-            <h1>Bookmarks</h1>
-
             <div class="row">
-                {% for bookmark in bookmarks %}
-                    <div class="col-md-4">
-                        {% include '@App/Video/widget-simple.html.twig' with {'video': bookmark.video} %}
+                <div class="col-sm-3">
+                    {% include '@App/User/nav.html.twig' %}
+                </div>
+                <div class="col-sm-9">
+                    <h1>Bookmarks</h1>
+
+                    <div class="row">
+                        {% for bookmark in bookmarks %}
+                            <div class="col-md-6">
+                                {% include '@App/Video/widget-simple.html.twig' with {'video': bookmark.video} %}
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
 

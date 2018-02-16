@@ -16,30 +16,35 @@ app.user.bookmarks:
 
 # video
 app.video:
-    path:     /video
+    path:     /videos
     defaults: { _controller: AppBundle:Video:index }
 app.video.create:
-    path:     /video/create
+    path:     /videos/create
     defaults: { _controller: AppBundle:Video:create }
 app.video.read:
-    path:     /video/{id}
+    path:     /videos/{id}
     defaults: { _controller: AppBundle:Video:read }
     requirements:
         id: \d+
 
 # category
+app.category:
+    path:     /categories
+    defaults: { _controller: AppBundle:Category:index }
+    requirements:
+        id: \d+
 app.category.read:
-    path:     /category/{id}
+    path:     /categories/{id}
     defaults: { _controller: AppBundle:Category:read }
     requirements:
         id: \d+
 
 # bookmark
 app.bookmark.create:
-    path:     /bookmark/create/{video}
+    path:     /bookmarks/create/{video}
     defaults: { _controller: AppBundle:Bookmark:create }
 app.bookmark.delete:
-    path:     /bookmark/delete/{video}
+    path:     /bookmarks/delete/{video}
     defaults: { _controller: AppBundle:Bookmark:delete }
 
 # security

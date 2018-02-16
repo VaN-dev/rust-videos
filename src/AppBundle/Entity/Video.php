@@ -73,10 +73,18 @@ class Video
     /**
      * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="videos")
      * @ORM\JoinColumn(name="category_id", nullable=true)
      */
     private $category;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="added_by_id", nullable=true)
+     */
+    private $addedBy;
 
 
     /**
@@ -247,6 +255,22 @@ class Video
         return $this;
     }
 
+    /**
+     * @return User
+     */
+    public function getAddedBy()
+    {
+        return $this->addedBy;
+    }
 
+    /**
+     * @param User $addedBy
+     * @return Video
+     */
+    public function setAddedBy($addedBy)
+    {
+        $this->addedBy = $addedBy;
+        return $this;
+    }
 }
 
