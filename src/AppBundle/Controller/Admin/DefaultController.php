@@ -12,6 +12,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('@App/admin/index.html.twig');
+        return $this->render('@App/Admin/index.html.twig');
     }
 }

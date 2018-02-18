@@ -1,0 +1,20 @@
+{% extends '@App/Admin/base.html.twig' %}
+
+{% block body %}
+    <h1>Reports ({{ reports | length }})</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for report in reports %}
+            <tr>
+                <th scope="row">{{ report.id }}</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

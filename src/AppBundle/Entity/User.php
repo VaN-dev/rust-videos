@@ -63,7 +63,7 @@ class User implements UserInterface
     {
         $this->createdAt = new \DateTime();
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
-        $this->roles = ["FRONTEND_USER"];
+        $this->roles = ["ROLE_USER"];
     }
 
     public function eraseCredentials()

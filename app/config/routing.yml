@@ -50,9 +50,20 @@ app.category.read:
 app.bookmark.create:
     path:     /bookmarks/create/{video}
     defaults: { _controller: AppBundle:Bookmark:create }
+    requirements:
+        id: \d+
 app.bookmark.delete:
     path:     /bookmarks/delete/{video}
     defaults: { _controller: AppBundle:Bookmark:delete }
+    requirements:
+        id: \d+
+
+# report
+app.report:
+    path:     /report/create/{video}
+    defaults: { _controller: AppBundle:Report:create }
+    requirements:
+        id: \d+
 
 # security
 app.security.login:

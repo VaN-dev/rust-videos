@@ -59,6 +59,10 @@
                             <li><a href="{{ path('app.user.profile') }}">Profile</a></li>
                             <li><a href="{{ path('app.user.bookmarks') }}">Bookmarks</a></li>
                             <li role="separator" class="divider"></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('admin') }}">Backend</a></li>
+                                <li role="separator" class="divider"></li>
+                            {% endif %}
                             <li><a href="{{ path('app.security.logout') }}">Sign out</a></li>
                         </ul>
                     </li>

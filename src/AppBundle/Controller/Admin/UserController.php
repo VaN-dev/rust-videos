@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
 
-        return $this->render('@App/admin/user/index.html.twig', [
+        return $this->render('@App/Admin/User/index.html.twig', [
             'users' => $users,
         ]);
     }

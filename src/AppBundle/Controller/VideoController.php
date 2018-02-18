@@ -69,15 +69,11 @@ class VideoController extends Controller
     }
 
     /**
-     * @param $id
+     * @param Video $video
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function readAction($id)
+    public function readAction(Video $video)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $video = $em->getRepository('AppBundle:Video')->find($id);
-
         return $this->render('@App/Video/read.html.twig', [
             'video' => $video,
         ]);
