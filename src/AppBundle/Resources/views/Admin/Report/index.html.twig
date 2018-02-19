@@ -1,20 +1,72 @@
 {% extends '@App/Admin/base.html.twig' %}
 
 {% block body %}
-    <h1>Reports ({{ reports | length }})</h1>
+    <h1>Reports</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for report in reports %}
+    <h2>Pending ports ({{ pendingReports | length }})</h2>
+
+    {% if pendingReports is not empty %}
+        <table class="table">
+            <thead>
             <tr>
-                <th scope="row">{{ report.id }}</th>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for report in pendingReports %}
+                <tr>
+                    <td>{{ report.id }}</td>
+                    <td><a href="{{ path('admin.report.read', {report: report.id}) }}">{{ report.video.title }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        no reports yet.
+    {% endif %}
+
+    <h2>Confirmed ports ({{ confirmedReports | length }})</h2>
+    {% if confirmedReports is not empty %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for report in confirmedReports %}
+                <tr>
+                    <td>{{ report.id }}</td>
+                    <td><a href="{{ path('admin.report.read', {report: report.id}) }}">{{ report.video.title }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        no reports yet.
+    {% endif %}
+
+    <h2>Dismissed ports ({{ dismissedReports | length }})</h2>
+    {% if dismissedReports is not empty %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for report in dismissedReports %}
+                <tr>
+                    <td>{{ report.id }}</td>
+                    <td><a href="{{ path('admin.report.read', {report: report.id}) }}">{{ report.video.title }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        no reports yet.
+    {% endif %}
 {% endblock %}

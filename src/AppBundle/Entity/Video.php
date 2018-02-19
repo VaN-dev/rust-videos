@@ -64,6 +64,13 @@ class Video
     private $author;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="channel", type="string", length=255, nullable=true)
@@ -93,6 +100,7 @@ class Video
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->status = true;
     }
 
     /**
@@ -202,24 +210,6 @@ class Video
     }
 
     /**
-     * @return Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param Category $category
-     * @return Video
-     */
-    public function setCategory(Category $category)
-    {
-        $this->category = $category;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getAuthor()
@@ -238,6 +228,24 @@ class Video
     }
 
     /**
+     * @return bool
+     */
+    public function isStatus(): bool
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param bool $status
+     * @return Video
+     */
+    public function setStatus(bool $status): Video
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getChannel()
@@ -252,6 +260,24 @@ class Video
     public function setChannel($channel)
     {
         $this->channel = $channel;
+        return $this;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     * @return Video
+     */
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
         return $this;
     }
 

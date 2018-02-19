@@ -8,8 +8,6 @@ app.register:
 
 #admin
 app.admin:
-#    path:     /admin
-#    defaults: { _controller: AppBundle:Admin\Default:index }
     resource: "@AppBundle/Controller/Admin"
     type:     annotation
 

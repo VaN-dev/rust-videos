@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class VideoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getActive()
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->andWhere('v.status = true')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

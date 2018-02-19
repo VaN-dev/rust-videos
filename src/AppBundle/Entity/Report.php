@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Report
 {
+    const STATUS_CONFIRMED = true;
+    const STATUS_DISMISSED = false;
+
     /**
      * @var int
      *
@@ -31,7 +34,7 @@ class Report
     /**
      * @var bool
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
 
@@ -55,7 +58,6 @@ class Report
     public function __construct()
     {
         $this->createdAt = new  \DateTime();
-        $this->status = false;
     }
 
     /**

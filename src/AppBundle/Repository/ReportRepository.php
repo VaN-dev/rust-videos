@@ -10,4 +10,30 @@ namespace AppBundle\Repository;
  */
 class ReportRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPendingReports()
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->andWhere('r.status IS NULL')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getConfirmedReports()
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->andWhere('r.status = true')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getDismissedReports()
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->andWhere('r.status = false')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

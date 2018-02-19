@@ -16,7 +16,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $videos = $this->getDoctrine()->getRepository('AppBundle:Video')->findAll();
+        $videos = $this->getDoctrine()->getRepository('AppBundle:Video')->getActive();
 
         return $this->render('@App/Default/index.html.twig', [
             'videos' => $videos,
