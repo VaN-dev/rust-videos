@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class DefaultController
+ * Class CategoryController
  * @package AppBundle\Controller
  */
 class CategoryController extends Controller
