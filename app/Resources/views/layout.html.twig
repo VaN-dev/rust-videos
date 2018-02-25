@@ -47,7 +47,6 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
                     <li><a href="{{ path('app.category') }}">Categories</a></li>
                 </ul>
 
@@ -84,7 +83,16 @@
         </div>
     </nav>
 
-    {% block main %}{% endblock %}
+
+
+    <div class="main">
+        {% for type, flashMessage in app.session.flashbag.all %}
+            {% include '@App/flash-message.html.twig' with {'type': type, 'message': flashMessage.0 | raw} %}
+        {% endfor %}
+
+
+        {% block main %}{% endblock %}
+    </div>
 
 
     {% include '@App/footer.html.twig' %}

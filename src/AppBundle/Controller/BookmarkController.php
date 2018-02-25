@@ -29,6 +29,8 @@ class BookmarkController extends Controller
         $em->persist($bookmark);
         $em->flush();
 
+        $this->addFlash('success', 'You successsfully bookmarked this video.');
+
         return new RedirectResponse($request->headers->get('referer'));
     }
 

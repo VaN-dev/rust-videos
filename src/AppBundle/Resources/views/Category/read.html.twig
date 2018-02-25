@@ -1,19 +1,15 @@
 {% extends '::layout.html.twig' %}
 
 {% block main %}
-    <div class="main">
+<div class="container">
+    <h1>{{ category.name }}</h1>
 
-        <div class="container">
-            <h2>{{ category.name }}</h2>
-
-            <div class="row">
-                {% for video in category.videos %}
-                    <div class="col-md-4">
-                        {% include '@App/Video/widget-simple.html.twig' %}
-                    </div>
-                {% endfor %}
+    <div class="row">
+        {% for video in category.videos %}
+            <div class="col-md-4">
+                {% include '@App/Video/widget-simple.html.twig' %}
             </div>
-        </div>
-
+        {% endfor %}
     </div>
+</div>
 {% endblock %}

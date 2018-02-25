@@ -36,6 +36,8 @@ class ReportController extends Controller
         $em->persist($report);
         $em->flush();
 
+        $this->addFlash('success', 'You successfully reported this video.');
+
         return new RedirectResponse($request->headers->get('referer'));
     }
 }

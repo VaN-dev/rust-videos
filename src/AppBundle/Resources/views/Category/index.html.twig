@@ -1,20 +1,16 @@
 {% extends '::layout.html.twig' %}
 
 {% block main %}
-    <div class="main">
+<div class="container">
+    <h1>Categories</h1>
 
-        <div class="container">
-            <h2>Categories</h2>
-
-            <ul class="list-group">
-                {% for category in categories %}
-                    <li class="list-group-item">
-                        <span class="badge">{{ category.videos | length }}</span>
-                        <a href="{{ path('app.category.read', {id: category.id}) }}">{{ category.name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-
-    </div>
+    <ul class="list-group">
+        {% for category in categories %}
+            <li class="list-group-item">
+                <span class="badge">{{ category.videos | length }}</span>
+                <a href="{{ path('app.category.read', {category: category.id}) }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

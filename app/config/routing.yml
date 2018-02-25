@@ -36,13 +36,11 @@ app.video.read:
 app.category:
     path:     /categories
     defaults: { _controller: AppBundle:Category:index }
-    requirements:
-        id: \d+
 app.category.read:
-    path:     /categories/{id}
+    path:     /categories/{category}
     defaults: { _controller: AppBundle:Category:read }
     requirements:
-        id: \d+
+        category: \d+
 
 # bookmark
 app.bookmark.create:

@@ -63,7 +63,7 @@ class VideoController extends Controller
             }
         }
 
-        return $this->render('@App/Video/insert.html.twig', [
+        return $this->render('@App/Video/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }

@@ -5,8 +5,14 @@ html {
   body {
     margin-bottom: 60px;
 
+    h1 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
     .main {
-      margin: 70px 0 0;
+      margin: 50px 0 0;
       padding: 30px 0;
     }
 
