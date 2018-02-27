@@ -21,3 +21,5 @@ parameters:
     sass.bin: /usr/bin/sass
     compass.bin: /usr/bin/compass
     ruby.bin: /usr/bin/ruby
+
+    google_api_key: ~

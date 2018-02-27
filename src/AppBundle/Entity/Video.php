@@ -22,6 +22,13 @@ class Video
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="remote_id", type="string", length=255)
+     */
+    private $remoteId;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -86,6 +93,13 @@ class Video
     private $category;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="thumbnail", type="string", length=255, nullable=true)
+     */
+    private $thumbnail;
+
+    /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -111,6 +125,24 @@ class Video
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRemoteId()
+    {
+        return $this->remoteId;
+    }
+
+    /**
+     * @param string $remoteId
+     * @return Video
+     */
+    public function setRemoteId($remoteId)
+    {
+        $this->remoteId = $remoteId;
+        return $this;
     }
 
     /**
@@ -260,6 +292,24 @@ class Video
     public function setChannel($channel)
     {
         $this->channel = $channel;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumbnail(): string
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * @param string $thumbnail
+     * @return Video
+     */
+    public function setThumbnail(string $thumbnail): Video
+    {
+        $this->thumbnail = $thumbnail;
         return $this;
     }
 

@@ -9,7 +9,9 @@
     </div>
     <div class="panel-footer">
         <a href="{{ path('app.video.read', {'id': video.id}) }}" class="pull-left">View details &raquo;</a>
-        <span class="pull-right"><i class="glyphicon glyphicon-folder-open"></i> &nbsp;<a href="{{ path('app.category.read', {category: video.category.id}) }}">{{ video.category.name }}</a></span>
+        {% if video.category is not null %}
+            <span class="pull-right"><i class="glyphicon glyphicon-folder-open"></i> &nbsp;<a href="{{ path('app.category.read', {category: video.category.id}) }}">{{ video.category.name }}</a></span>
+        {% endif %}
         <div class="clearfix"></div>
     </div>
 </div>

@@ -6,8 +6,14 @@ services:
         class: AppBundle\EventListener\VideoEventListener
         arguments:
             - "@app.converter.video.uri_to_embed"
+            - "@app.api.youtube_client"
         tags:
             - { name: kernel.event_listener, event: app.video_pre_save, method: preSave }
+
+    app.api.youtube_client:
+        class: AppBundle\Service\ApiClient\YoutubeApiClient
+        arguments:
+            - '%google_api_key%'
 
     # security
     app.security.encoder.password:
