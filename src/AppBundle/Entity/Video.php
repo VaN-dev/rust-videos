@@ -298,7 +298,7 @@ class Video
     /**
      * @return string
      */
-    public function getThumbnail(): string
+    public function getThumbnail()
     {
         return $this->thumbnail;
     }

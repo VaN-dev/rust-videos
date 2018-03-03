@@ -21,17 +21,13 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
             ->add('url')
-            ->add('description')
             ->add('category', EntityType::class, [
                 'class' => 'AppBundle\Entity\Category',
                 'choice_label' => 'name',
                 'placeholder' => 'Choose a category..',
                 'required' => false,
             ])
-            ->add('author')
-            ->add('channel')
         ;
     }
 
