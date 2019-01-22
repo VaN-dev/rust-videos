@@ -39,6 +39,6 @@ class LoadVideoData extends AbstractFixture
         ;
         $manager->persist($video_02);
 
-        $manager->flush();
+//        $manager->flush();
     }
 }
