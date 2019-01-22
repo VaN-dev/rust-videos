@@ -28,6 +28,17 @@ class LoadVideoData extends AbstractFixture
         ;
         $manager->persist($video_01);
 
+        $video_02 = new Video();
+        $video_02
+            ->setTitle('The Mini Fort | Solo Starter Base with a Shooting Floor | Building 3.2')
+            ->setUrl('https://www.youtube.com/watch?v=jyRM81d0494')
+            ->setEmbed('https://www.youtube.com/embed/jyRM81d0494')
+            ->setAuthor('Evil Wurst')
+            ->setChannel('https://www.youtube.com/channel/UCAbl4dsDJTrvqm2N6yu1Tqw')
+            ->setCategory($this->getReference('category-basedesigns'))
+        ;
+        $manager->persist($video_02);
+
         $manager->flush();
     }
 }
