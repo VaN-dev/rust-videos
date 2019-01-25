@@ -1,0 +1,43 @@
+/* line 1, assetic_compassGAzDXp.scss */
+html {
+  min-height: 100%;
+  position: relative;
+}
+/* line 5, assetic_compassGAzDXp.scss */
+html body {
+  margin-bottom: 60px;
+}
+/* line 8, assetic_compassGAzDXp.scss */
+html body h1 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+/* line 14, assetic_compassGAzDXp.scss */
+html body .main {
+  margin: 50px 0 0;
+  padding: 30px 0;
+}
+/* line 19, assetic_compassGAzDXp.scss */
+html body .jumbotron {
+  background: url("/bundles/app/img/banner-01.jpg") center center;
+  color: #fff;
+}
+/* line 24, assetic_compassGAzDXp.scss */
+html body .jumbotron .content {
+  text-shadow: 2px 2px #000;
+}
+/* line 30, assetic_compassGAzDXp.scss */
+html body .favorite-trigger .disabled {
+  color: #ddd;
+}
+/* line 35, assetic_compassGAzDXp.scss */
+html body footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: #58666e;
+  background-color: #eaeaea;
+}

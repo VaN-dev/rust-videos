@@ -25,6 +25,7 @@ class LoadVideoData extends AbstractFixture
             ->setAuthor('xRaW')
             ->setChannel('https://www.youtube.com/channel/UCxqfN_TEQf4NxQ4nW1pBIWQ')
             ->setCategory($this->getReference('category-basedesigns'))
+            ->setRemoteId('mfZyASuMT88')
         ;
         $manager->persist($video_01);
 
@@ -36,9 +37,10 @@ class LoadVideoData extends AbstractFixture
             ->setAuthor('Evil Wurst')
             ->setChannel('https://www.youtube.com/channel/UCAbl4dsDJTrvqm2N6yu1Tqw')
             ->setCategory($this->getReference('category-basedesigns'))
+            ->setRemoteId('jyRM81d0494')
         ;
         $manager->persist($video_02);
 
-//        $manager->flush();
+        $manager->flush();
     }
 }
