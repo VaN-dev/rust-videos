@@ -25,3 +25,23 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.converter.video.uri_to_embed:
+        class: App\Service\Converter\Video\UriToEmbedConverter
+
+    app.listener.video:
+        class: App\EventListener\VideoEventListener
+        arguments:
+            - "@app.converter.video.uri_to_embed"
+            - "@app.api.youtube_client"
+        tags:
+            - { name: kernel.event_listener, event: app.video_pre_save, method: preSave }
+
+    app.api.youtube_client:
+        class: App\Service\ApiClient\YoutubeApiClient
+        arguments:
+            - '%env(GOOGLE_API_KEY)%'
+
+    # security
+    app.security.encoder.password:
+        class: App\Service\Encoder\PasswordEncoder

@@ -1,3 +1,73 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+app:
+    path:     /
+    controller: App\Controller\DefaultController::index
+
+app.register:
+    path:     /register
+    controller: App\Controller\UserController::register
+
+#admin
+app.admin:
+    resource: '../../src/Controller/Admin'
+    type:     annotation
+
+# user
+app.user.profile:
+    path:     /profile
+    controller: App\Controller\UserController::profile
+app.user.bookmarks:
+    path:     /bookmarks
+    controller: App\Controller\UserController::bookmarks
+
+# video
+app.video:
+    path:     /videos
+    controller: App\Controller\VideoController::index
+app.video.create:
+    path:     /videos/create
+    controller: App\Controller\VideoController::create
+app.video.read:
+    path:     /videos/{id}
+    controller: App\Controller\VideoController::read
+    requirements:
+        id: \d+
+
+# category
+app.category:
+    path:     /categories
+    controller: App\Controller\CategoryController::index
+app.category.read:
+    path:     /categories/{category}
+    controller: App\Controller\CategoryController::read
+    requirements:
+        category: \d+
+
+# bookmark
+app.bookmark.create:
+    path:     /bookmarks/create/{video}
+    controller: App\Controller\BookmarkController::create
+    requirements:
+        id: \d+
+app.bookmark.delete:
+    path:     /bookmarks/delete/{video}
+    controller: App\Controller\BookmarkController::delete
+    requirements:
+        id: \d+
+
+# report
+app.report:
+    path:     /report/create/{video}
+    controller: App\Controller\ReportController::create
+    requirements:
+        id: \d+
+
+# security
+app.security.login:
+    path:   /login
+    controller: App\Controller\SecurityController::login
+
+#app.security.login_check:
+#    path:   /login_check
+
+app.security.logout:
+    path:   /logout

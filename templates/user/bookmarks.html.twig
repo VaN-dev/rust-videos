@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                {% include 'user/nav.html.twig' %}
+            </div>
+            <div class="col-sm-9">
+                <h1>Bookmarks</h1>
+
+                <div class="row">
+                    {% for bookmark in bookmarks %}
+                        <div class="col-md-6">
+                            {% include 'video/widget-simple.html.twig' with {'video': bookmark.video} %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

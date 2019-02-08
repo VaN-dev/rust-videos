@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <h1>{{ video.title }}</h1>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+                <div class="embed-responsive embed-responsive-16by9">
+                    {#<iframe class="embed-responsive-item" width="560" height="315" src="{{ video.url }}" allowfullscreen></iframe>#}
+                    <iframe class="embed-responsive-item" src="{{ video.embed }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Information</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Category: <a href="{{ path('app.category.read', {category: video.category.id}) }}">{{ video.category.name }}</a></li>
+                    <li class="list-group-item">Author: {{ video.author }}</li>
+                    <li class="list-group-item">Added at: {{ video.createdAt | date('Y-m-d') }}</li>
+                </ul>
+
+                <h2>Actions</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <i class="glyphicon glyphicon-heart-empty"></i>
+                        {% if not is_bookmarked(video) %}
+                            <a href="{{ path('app.bookmark.create', {'video': video.id}) }}">Bookmark</a>
+                        {% else %}
+                            <a href="{{ path('app.bookmark.delete', {'video': video.id}) }}">Unbookmark</a>
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item"><i class="glyphicon glyphicon glyphicon-alert"></i> <a href="{{ path('app.report', {video: video.id}) }}">Report</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

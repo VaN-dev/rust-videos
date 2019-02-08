@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <h1>Submit a video</h1>
+
+        {{ form_start(form) }}
+
+            {{ form_errors(form) }}
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    {{ form_row(form.url) }}
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    {{ form_row(form.category) }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

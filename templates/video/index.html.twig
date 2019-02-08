@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <h1>Videos</h1>
+
+        <div class="row">
+            {% for video in videos %}
+                <div class="col-md-4">
+                    {% include 'video/widget-simple.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="{{ path('app.video.create') }}" class="btn btn-primary">Add a video &raquo;</a>
+    </div>
+{% endblock %}

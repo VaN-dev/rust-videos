@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+<div class="container">
+    <h1>{{ category.name }}</h1>
+
+    <div class="row">
+        {% for video in category.videos %}
+            <div class="col-md-4">
+                {% include 'video/widget-simple.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

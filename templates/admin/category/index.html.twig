@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categories ({{ categories | length }})</h1>
+
+    <a href="{{ path('admin.category.create') }}" class="btn btn-primary pull-right">Add a category</a>
+    <br><br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Videos</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <th scope="row">{{ category.name }}</th>
+                <td><span class="badge badge-secondary">{{ category.videos | length }}</span></td>
+                <td>
+                    <a href="{{ path('admin.category.update', {category: category.id}) }}">update</a> -
+                    <a href="{{ path('admin.category.delete', {category: category.id}) }}">delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
