@@ -66,8 +66,6 @@ app.security.login:
     path:   /login
     controller: App\Controller\SecurityController::login
 
-#app.security.login_check:
-#    path:   /login_check
-
 app.security.logout:
     path:   /logout
+    methods: GET

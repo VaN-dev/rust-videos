@@ -37,14 +37,20 @@ class VideoEventListener
      */
     public function preSave(VideoEvent $event)
     {
+        $video = $event->getVideo();
+
         $pattern = '/https:\/\/www.youtube.com\/watch\?v=(?P<identifier>[\w-]+)/i';
         if (preg_match($pattern, $event->getVideo()->getUrl(), $matches)) {
-//            $embed = 'https://www.youtube.com/embed/' . $matches['identifier'];
-//            $video->setEmbed($embed);
-            $event->getVideo()->setRemoteId($matches['identifier']);
-            $this->client->getVideoData($event->getVideo());
+            $video->setRemoteId($matches['identifier']);
+            $data = $this->client->getVideoData($event->getVideo());
+
+            $video
+                ->setTitle($data['title'])
+                ->setAuthor($data['channelTitle'])
+                ->setThumbnail($data['thumbnail'])
+            ;
         }
 
-        $this->uriToEmbedConverter->convert($event->getVideo());
+        $this->uriToEmbedConverter->convert($video);
     }
 }

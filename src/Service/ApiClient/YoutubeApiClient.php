@@ -21,15 +21,11 @@ class YoutubeApiClient
     {
         $res = $this->client->request('GET', 'https://www.googleapis.com/youtube/v3/videos?part=id,+snippet&id='.$video->getRemoteId().'&key='.$this->key);
         $data = \GuzzleHttp\json_decode($res->getBody()->getContents());
-//        dump($data);
-//        dump($data->items[0]->snippet->description);
-//        die();
 
-
-        $video
-            ->setTitle($data->items[0]->snippet->title)
-            ->setAuthor($data->items[0]->snippet->channelTitle)
-            ->setThumbnail($data->items[0]->snippet->thumbnails->default->url)
-        ;
+        return [
+            'title' => $data->items[0]->snippet->title,
+            'channelTitle' => $data->items[0]->snippet->channelTitle,
+            'thumbnail' => $data->items[0]->snippet->thumbnails->default->url,
+        ];
     }
 }
